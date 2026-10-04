@@ -1,0 +1,17 @@
+# ไฟล์ที่ MLflow สร้างตอนรัน — ห้าม commit ขึ้น GitHub
+mlflow.db
+mlruns/
+processed_data/
+__pycache__/
+ 
+# ไฟล์ที่เครื่องมือใน CI สร้างไว้ชั่วคราว
+.ruff_cache/
+report-*.xml
+ 
+# ไฟล์ขยะของระบบปฏิบัติการ (git ไม่รองรับคอมเมนต์ท้ายบรรทัด จึงต้องแยกบรรทัด)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ถ้า git add . โดยไม่มี .gitignore ฐานข้อมูล mlflow.db และโฟลเดอร์ mlruns/ จะถูก commit ขึ้นไปด้วย
+# นอกจากเปลืองพื้นที่แล้ว ถ้ามี mlruns/ ติดไปด้วย MLflow บนเครื่องที่ clone ไปจะกลับไปใช้ file:./mlruns แทน sqlite ทำให้ Model Registry ใช้ไม่ได้
